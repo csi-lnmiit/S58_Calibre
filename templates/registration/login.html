@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}<title>Calibre-Login</title>{% endblock %}
+{% block content %}
+
+<div class="container text-center">
+    <form class="form-login" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h1 class="logo my-4">Login</h1>
+        {% if next %}
+            <div class="row justify-content-center">
+                <div class="alert alert-danger" role="alert">
+                    {% if user.is_authenticated %}
+                        Your account doesn't have access to this page. To proceed, please login with an account that has access.
+                    {% else %}
+                        Please login to see this page.
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        {% if form.errors %}
+            <div class="alert alert-danger justify-content-center" role="alert">
+                <strong>Incorrect Username/Password</strong>
+            </div>
+        {% endif %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+    <p class="text-muted">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+</div>
+{% endblock %}

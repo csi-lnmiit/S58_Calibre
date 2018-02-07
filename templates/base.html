@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}<title>Calibre</title>{% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {# BOOTSTRAP FLATTY THEME #}
+        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrapflatty.min.css' %}">
+{#        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">#}
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        <script src="{% static 'js/bootstrap/bootstrap.js' %}"></script>
+    </head>
+
+    <body>
+{#    THERE ARE SOME ISSUES WITH THE NAVBAR #}
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a class="navbar-brand" href="{% url 'home' %}">Calibre - LNMIIT</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarColor01">
+            <ul class="nav navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li><a class="nav-link" href="{% url 'index' %}">My Exams</a></li>
+                    <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a class="nav-link" href="#">About Us</a></li>
+                    <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{# --- HERE GOES OUR MAIN APPLICAION CONTENT --- #}
+    {% block content %}
+        {% if user.is_authenticated %}
+        <div class="container base-container text-center">
+            <h3>Welcome to Calibre</h3>
+            <p>Username: <strong>{{user.get_username}}</strong></p>
+        </div>
+        {% else %}
+        <div class="jumbotron">
+            <h1 class="display-4">Calibre</h1>
+            <p class="lead">An online exam application for colleges and schools. Sign up using your academic email now.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Sign Up</a>
+            </p>
+            <p>
+                Already have an account? <a href="{% url 'login' %}" role="button">Login</a>
+            </p>
+        </div>
+        {% endif %}
+    {% endblock %}
+    </body>
+</html>
