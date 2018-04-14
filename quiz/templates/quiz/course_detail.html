@@ -1,0 +1,43 @@
+{% extends 'dashboard.html' %}
+{% block title %}<title>{{ course.course_name }}</title>{% endblock %}
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <h1>{{ course.course_name }}</h1>
+        </div>
+        <div class="row">
+            {% if course.description %}
+                <p>{{ course.description }}</p>
+            {% else %}
+                <p>There are no description available.</p>
+            {% endif %}
+        </div>
+        <div class="row">
+            <h4>Quizzes/Exams</h4>
+        </div>
+        <div class="row">
+
+            {% if course.exam_set.all %}
+              <ul>
+              {% for exam in course.exam_set.all %}
+                <li>
+                    <a href="{% url 'exam_detail' exam.pk %}">{{ exam.title }}</a>
+                    {% if exam.start_datetime %}
+                    <p>Available from <strong>{{ exam.start_datetime }}</strong> till <strong>{{ exam.end_datetime }}</strong></p>
+                    {% else %}
+                    <p>No information available regarding date and time.</p>
+                    {% endif %}
+                </li>
+              {% endfor %}
+             </ul>
+            {% else %}
+                <p>There are no quizzes available.</p>
+            {% endif %}
+        </div>
+        <div class="row">
+            <a href="/dashboard/exam/new/{{ course.id }}" class="btn btn-primary">Create Quiz</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^$', accounts_views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
-    path('quiz/', include('quiz.urls')),
+    path('dashboard/', include('quiz.urls')),
 #    url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
 #    url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
 #    url(r'^signup/$', accounts_views.signup, name='signup'),

@@ -1,0 +1,39 @@
+{% extends 'dashboard.html' %}
+{% block title %}<title>New Exam</title>{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2 class="text-center logo my-4">New Exam</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="course">Course</label>
+                                <input value = "{{ cid }}" type="text" name="course" class="form-control" placeholder="Course Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" class="form-control" placeholder="Exam Title" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="start_datetime">Start Date & Time</label>
+                                <input type="text" name="start_datetime" class="form-control" placeholder="Start Date & Time">
+                            </div>
+                            <div class="form-group">
+                                <label for="end_datetime">End Date & Time</label>
+                                <input type="text" name="end_datetime" class="form-control" placeholder="End Date & Time">
+                            </div>
+                            {% for error in field.errors %}
+                              <p class="alert-danger">{{ error }}</p>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'dashboard.html' %}
+{% block title %}<title>{{ exam.course }}-{{ exam.title }}</title>{% endblock %}
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <h1>{{ exam.title }}</h1>
+        </div>
+        <div class="row">
+            <p>Course: <strong>{{ exam.course }}</strong>
+            <br>
+            {% if exam.start_datetime %}
+            Available from <strong>{{ exam.start_datetime }}</strong> till <strong>{{ exam.end_datetime }}</strong>
+            {% endif %}
+            </p>
+        </div>
+        <div class="row">
+            <a href="#" class="btn btn-primary">Add Question</a>
+        </div>
+    </div>
+{% endblock %}

@@ -7,15 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {# BOOTSTRAP FLATTY THEME #}
         <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrapflatty.min.css' %}">
-{#        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">#}
+        <!--<link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">-->
         <link rel="stylesheet" href="{% static 'css/app.css' %}">
         <script src="{% static 'js/bootstrap/bootstrap.js' %}"></script>
     </head>
 
     <body>
-{#    THERE ARE SOME ISSUES WITH THE NAVBAR #}
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <a class="navbar-brand" href="{% url 'home' %}">Calibre - LNMIIT</a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo3.png' %}" height="30" alt=""></a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,7 +22,7 @@
         <div class="navbar-collapse collapse" id="navbarColor01">
             <ul class="nav navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-                    <li><a class="nav-link" href="{% url 'index' %}">My Exams</a></li>
+                    <li><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
                     <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
                     <li><a class="nav-link" href="#">About Us</a></li>
@@ -32,7 +31,7 @@
             </ul>
         </div>
     </nav>
-{# --- HERE GOES OUR MAIN APPLICAION CONTENT --- #}
+ <!--HERE GOES OUR MAIN APPLICAION CONTENT-->
     {% block content %}
         {% if user.is_authenticated %}
         <div class="container base-container text-center">
@@ -41,8 +40,8 @@
         </div>
         {% else %}
         <div class="jumbotron">
-            <h1 class="display-4">Calibre</h1>
-            <p class="lead">An online exam application for colleges and schools. Sign up using your academic email now.</p>
+            <h1 class="display-4">calibre</h1>
+            <p class="lead">An online exam management application for academic institutions. Sign up using your academic email now.</p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="{% url 'signup' %}" role="button">Sign Up</a>
             </p>

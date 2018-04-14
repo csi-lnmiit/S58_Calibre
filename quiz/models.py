@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from datetime import date
 import uuid
 
@@ -9,6 +10,9 @@ class Course(models.Model):
 
     def __str__(self):
         return self.course_name
+
+    def get_absolute_url(self):
+        return reverse('course_detail', args=[str(self.id)])
 
 class Exam(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
@@ -36,6 +40,10 @@ class Exam(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('exam_detail', args=[str(self.id)])
+
+
 class Question(models.Model):
     TEXT = 'text'
     RADIO = 'radio'
@@ -58,14 +66,14 @@ class Question(models.Model):
     def __str__(self):
         return self.text
 
-class AnswerText(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    answer = models.TextField(max_length=1200)
+# class AnswerText(models.Model):
+#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+#     answer = models.TextField(max_length=1200)
 
-class AnswerMCQ(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    option = models.CharField(max_length=500)
-    is_correct = models.BooleanField(default=False)
+# class AnswerMCQ(models.Model):
+#     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+#     option = models.CharField(max_length=500)
+#     is_correct = models.BooleanField(default=False)
 
 # class options(models.Model):
 #     question = models.ForeignKey(Question)

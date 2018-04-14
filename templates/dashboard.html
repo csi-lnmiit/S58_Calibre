@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}<title>Dashboard</title>{% endblock %}
+{% block content %}
+    <div class="container-fluid base-container">
+        <div class="row">
+            <div class="col-md-3 list-group">
+                <a href="{% url 'course_list' %}" class="list-group-item">My Courses</a>
+                <!--<a href="{% url 'course_form' %}" class="list-group-item">Create Course</a>-->
+                <a href="{% url 'myexam' %}" class="list-group-item">Sample Quiz</a>
+                <a href="#" class="list-group-item">Profile</a>
+                <a href="#" class="list-group-item">Title 2</a>
+                <a href="#" class="list-group-item">Title 3</a>
+                <a href="#" class="list-group-item">Title 4</a>
+            </div>
+            <div class="col-md-9">
+                {% block body %}
+                <h3>Welcome to Calibre-LNMIIT</h3>
+                <p>You are logged in as <strong>{{user.get_username}}</strong></p>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

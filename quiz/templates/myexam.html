@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% block title %}<title>Quiz</title>{% endblock %}
+{% extends "dashboard.html" %}
+{% block title %}<title>My Exam</title>{% endblock %}
 {% block content %}
     {# NOTE: This is just a non-working template for quiz #}
     <div class="container-fluid base-container">
@@ -11,7 +11,7 @@
                 <div class="container-fluid border bg-light" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="row" style="margin-top: 10px;">
                         <div class="col"><p>Question <strong>{{ i }}</strong> of 9</p></div>
-                        <div class="col text-center"><p>Marks: <strong>2</strong></span></p></div>
+                        <div class="col text-center"><p>Marks: <strong>2</strong></p></div>
                         <div class="col text-right">
                             <button type="button" class="btn btn-outline-primary btn-sm">Mark for Review</button>
                         </div>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     {% for j in "1234" %}
-                    <div class="radio">
+                    <div class="radio" style="padding: 5px;">
                         <label><input type="radio" name="optradio{{ i }}"> Option {{ j }}</label>
                     </div>
                     {% endfor %}
@@ -41,7 +41,7 @@
                     <div class="container-fluid border bg-light" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="row" style="margin-top: 10px;">
                         <div class="col"><p>Question <strong>{{ i }}</strong> of 9</p></div>
-                        <div class="col text-center"><p>Marks: <strong>4</strong></span></p></div>
+                        <div class="col text-center"><p>Marks: <strong>4</strong></p></div>
                         <div class="col text-right">
                             <button type="button" class="btn btn-outline-primary btn-sm">Mark for Review</button>
                         </div>
@@ -65,7 +65,7 @@
                 <div class="container-fluid border bg-light" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="row" style="margin-top: 10px;">
                         <div class="col"><p>Question <strong>{{ i }}</strong> of 9</p></div>
-                        <div class="col text-center"><p>Marks: <strong>4</strong></span></p></div>
+                        <div class="col text-center"><p>Marks: <strong>4</strong></p></div>
                         <div class="col text-right">
                             <button type="button" class="btn btn-outline-primary btn-sm">Mark for Review</button>
                         </div>
@@ -92,8 +92,17 @@
                 {% endfor %}
             </div>
         {# LEFT COLUMN: CONTAINS EXAM DETAILS #}
-            <div class="col-sm-3 text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At corporis deleniti dolorem facere nesciunt perspiciatis tempora. Ad aliquam commodi cupiditate debitis, dicta facilis fugiat id magni optio recusandae sunt voluptate?
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col">
+                        <h4>Overview</h4>
+                        <p>Course: <strong>General Knowledge</strong></p>
+                        <p>Number of Questions: <strong>9</strong></p>
+                        <p>Marks: <strong>28</strong></p>
+                        <p>Time Alloted: <strong>30 minutes</strong></p>
+                        <p>Time Left: <strong>25 minutes</strong></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
